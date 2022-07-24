@@ -79,13 +79,11 @@ public:
  * Default constructor
  */
 LinkedList::LinkedList() {
-    // DONE (1): Initialize housekeeping variables
+    // done
+    // FIXME (1): Initialize housekeeping variables
     //set head and tail equal to null
     head = nullptr;
     tail = nullptr;
-
-    this->head = nullptr;
-    this->tail = nullptr;
 }
 
 /**
@@ -108,20 +106,20 @@ LinkedList::~LinkedList() {
  * Append a new bid to the end of the list
  */
 void LinkedList::Append(Bid bid) {
-    // DONE (2): Implement append logic
+    // done
+    // FIXME (2): Implement append logic
     //Create new node
     Node* newNode = new Node;
     newNode->bid = bid;
     newNode->next = nullptr;
 
     //if there is nothing at the head...
-    if (head == nullptr) {
-        // new node becomes the head and the tail
-        head = newNode;
-        tail = newNode;
+    if(head == nullptr) {
+            // new node becomes the head and the tail
+            head = newNode;
+            tail = newNode;
     }
-
-    //else
+    //else 
     else {
         // make current tail node point to the new node
         tail->next = newNode;
@@ -136,18 +134,18 @@ void LinkedList::Append(Bid bid) {
  * Prepend a new bid to the start of the list
  */
 void LinkedList::Prepend(Bid bid) {
-    // DONE (3): Implement prepend logic
+    // done
+    // FIXME (3): Implement prepend logic
     // Create new node
-    Node* newNode = new Node;
+    Node* newNode = new Node();
     newNode->bid = bid;
     newNode->next = nullptr;
 
     // if there is already something at the head...
-    if (head != nullptr) {
+    if(head != nullptr) {
         // new node points to current head as its next node
         newNode->next = head;
     }
-
     // head now becomes the new node
     head = newNode;
 
@@ -159,7 +157,8 @@ void LinkedList::Prepend(Bid bid) {
  * Simple output of all bids in the list
  */
 void LinkedList::PrintList() {
-    // DONE (4): Implement print logic
+    // done
+    // FIXME (4): Implement print logic
     // start at the head
     Node* current = head;
 
@@ -174,14 +173,17 @@ void LinkedList::PrintList() {
         //set current equal to next
         current = current->next;
     }
+
 }
+
 /**
  * Remove a specified bid
  *
  * @param bidId The bid id to remove from the list
  */
 void LinkedList::Remove(string bidId) {
-    // DONE (5): Implement remove logic
+    // done
+    // FIXME (5): Implement remove logic
     // special case if matching node is the head
     if (head->bid.bidId == bidId) {
         // make head point to the next node in the list
@@ -191,6 +193,7 @@ void LinkedList::Remove(string bidId) {
         //return
         return;
     }
+
     // start at the head
     Node* current = head;
     Node* temp;
@@ -227,13 +230,18 @@ void LinkedList::Remove(string bidId) {
  * @param bidId The bid id to search for
  */
 Bid LinkedList::Search(string bidId) {
-    // DONE (6): Implement search logic
+    // done
+    // FIXME (6): Implement search logic
 
-    // empty bid
     Bid bid;
-
     // special case if matching node is the head
     if (head->bid.bidId == bidId) {
+        // make head point to the next node in the list
+        //decrease size count
+        // ???? Why?
+        // I don't think we're supposed to remove it, are we?
+        
+        //return
         return head->bid;
     }
 
@@ -255,6 +263,7 @@ Bid LinkedList::Search(string bidId) {
 
      //return bid
     return bid;
+
 }
 
 /**
